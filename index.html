@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="banner">
+      <img src="./public/banner.png" alt="banner" />
+    </div>
+    <div id="container">
+      <div id="intro">
+        <p id="title">Welcome to shape calculator</p>
+        <p id="description">
+          Shape Calculator is an interactive web application. To the right you
+          will find the 3 step application.Follow the instructions in each step.
+          Clicking cancel will take you back to step 1. Enjoy!
+        </p>
+        <p class="story">
+          A small river named Duden flows by their place and supplies it with
+          the nevessary regelialia. It is a paradisematic country, in which
+          roasted parts of sentences fly into your mouth.
+        </p>
+        <p class="story">
+          Even the all-powerful Pointing has no control about the blind texts it
+          is an almost unorthographic life one day however a small line of blind
+          text by the name of Lores Ipsum decided to leave for the far world of
+          grammar. The big Oxmox advised her not to do so, because there were
+          thousands of bad commas.
+        </p>
+      </div>
+      <div id="work-area">
+        <div id="step-1">
+          <h4>Step 1: Select your shape</h4>
+          <p class="desc">
+            Please select the shape that you would like to calculate the area of
+            and press the button tp 'Go to step 2'
+          </p>
+
+          <form>
+            <label>
+              <input type="radio" name="shape" value="rectangle" />
+              Rectangle
+            </label>
+            <label>
+              <input type="radio" name="shape" value="circle" />
+              Circle
+            </label>
+            <label>
+              <input type="radio" name="shape" value="square" />
+              Square
+            </label>
+            <label>
+              <input type="radio" name="shape" value="ellipse" />
+              Ellipse
+            </label>
+            <button type="submit" onclick="toStepTwo(event)">
+              Go to step 2
+            </button>
+            <span>or</span><button type="reset">Cancel</button>
+          </form>
+        </div>
+
+        <div id="step-2" class="none">
+          <h4>Step 2: Insert your values</h4>
+          <p class="desc">
+            You have selected a <span id="shape"></span>,please put the required
+            values.
+          </p>
+
+          <div id="input-user">
+            <div id="rectangle" class="none">
+              <label
+                >Enter Length<input type="number" id="rectangle-val1"
+              /></label>
+              <label
+                >Enter Breadth<input type="number" id="rectangle-val2"
+              /></label>
+            </div>
+            <div id="circle" class="none">
+              <label
+                >Enter the Radius<input type="number" id="circle-val1"
+              /></label>
+            </div>
+            <div id="square" class="none">
+              <label
+                >Enter a side<input type="number" id="square-val1"
+              /></label>
+            </div>
+            <div id="ellipse" class="none">
+              <label>
+                Minor-Axis
+                <input type="number" id="ellipse-val1" />
+              </label>
+              <label>
+                Major-Axis
+                <input type="number" id="ellipse-val2" />
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" onclick="toStepThree(event)">
+            Go to step 3
+          </button>
+          <span>or</span>
+          <button onclick="toHome(event,this)" id="step-2">Cancel</button>
+        </div>
+
+        <div id="step-3" class="none">
+          <h4>Step 3: Your results</h4>
+          <p class="desc">
+            You have selected a <span id="shape"></span>with Minor-Axis
+            <span id="minor-Axis"></span>and Major-Axis<span
+              id="major-Axis"
+            ></span
+            >. Below is your result.
+          </p>
+          <div id="result">
+            <p>The Area is <span id="result-area"></span></p>
+            <button onclick="toHome(event)" id="step-3">Start Over</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="ad">
+        <p>120 x 240 Ad</p>
+        <p>(Vertical Banner)</p>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
