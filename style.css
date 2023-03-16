@@ -141,7 +141,7 @@ input[type="number"] {
   flex-direction: row;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   #content-box {
     flex-direction: column;
   }
