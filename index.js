@@ -2,6 +2,8 @@ const step1 = document.querySelector("#step-1");
 const step2 = document.querySelector("#step-2");
 const step3 = document.querySelector("#step-3");
 const totalArea = document.querySelector("#result-area");
+const shapeSelection = document.querySelectorAll("#shape");
+const inputValues = document.querySelector("#shape-values");
 
 let shapeValues = {
   shape: "",
@@ -17,6 +19,10 @@ function hideBlock(node) {
 
 function displayBlock(node) {
   node.style.display = "flex";
+}
+
+function setInputValues(text) {
+  inputValues.innerText = text;
 }
 
 //to check if the fields are empty
@@ -40,17 +46,25 @@ function checkValues() {
   return shapeValues.values.length > 0;
 }
 
-//calculate area
+//calculate area and set input values in result page
 function calculateArea() {
   switch (shapeValues.shape) {
     case "rectangle":
+      setInputValues(
+        `length ${shapeValues.values[0]} units and breadth ${shapeValues.values[1]} units`
+      );
       return shapeValues.values[0] * shapeValues.values[1];
 
     case "circle":
+      setInputValues(`radius ${shapeValues.values[0]} units`);
       return 3.14 * shapeValues.values[0] * shapeValues.values[0];
     case "square":
+      setInputValues(`sides ${shapeValues.values[0]} units`);
       return shapeValues.values[0] ** 2;
     case "ellipse":
+      setInputValues(
+        `Minor-Axis ${shapeValues.values[0]} units and Major-Axis ${shapeValues.values[1]} units`
+      );
       return 3.14 * shapeValues.values[1] * shapeValues.values[0];
     default:
       return 0;
@@ -66,6 +80,8 @@ function toStepTwo(event) {
     shapeValues.shape = selectedShape;
     selectedRadioB.checked = false;
     hideBlock(step1);
+    shapeSelection.forEach((node) => (node.innerText = shapeValues.shape));
+
     displayBlock(document.querySelector(`#${selectedShape}`));
     displayBlock(step2);
   } else {
@@ -90,7 +106,8 @@ function toStepThree(event) {
 function toHome(event) {
   event.preventDefault();
   const screen = event.target.id;
+  hideBlock(document.querySelector(`#${shapeValues.shape}`));
   document.querySelector(`#${screen}`).style.display = "none";
-  step1.style.display = "flex";
+  displayBlock(step1);
   shapeValues = { shape: "", values: [], area: null };
 }
